@@ -2,6 +2,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Add Bootstrap JavaScript and jQuery via CDN (jQuery is required by Bootstrap) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style>
@@ -15,25 +16,44 @@
             width: 100%;
             z-index: 999;
         }
-        
+
         .button-container {
             display: none;
             background-color: #fff;
             padding: 10px;
             position: fixed;
-            top: 50px; 
+            top: 50px;
             left: 0;
             width: 100%;
             z-index: 998;
         }
 
         .green-square {
-            background:#125f21;
-            height:100px;
-            width:100px;
+            background: #125f21;
+            height: 100px;
+            width: 100px;
             position: absolute;
-            top: 150px; 
+            top: 150px;
             left: 0;
+        }
+
+        .carousel-container {
+            position: absolute;
+            top: 350px; 
+            left: 0;
+            width: 100%;
+            z-index: 997;
+        }
+
+        .carousel-item {
+            text-align: center;
+        }
+
+        .carousel-item-text {
+            background-color: #333; 
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
         }
     </style>
     <script>
@@ -59,7 +79,7 @@
                     });
                     isReversed = false;
                 }
-            }); 
+            });
 
             $("button#slideanim").click(function () {
                 if (!isSlidUp) {
@@ -92,7 +112,7 @@
             $("button#event").click(function () {
                 alert("You clicked da button!1!1 :o");
             });
-       
+
             function startAnimation() {
                 $(".green-square").animate({
                     left: '250px',
@@ -103,21 +123,59 @@
             }
         });
 
+        $("#carouselExampleFade").carousel({
+            interval: false
+        });
     </script>
 </head>
 <body>
-    <div class="menu-bar">
-        <button id="menu" class="btn btn-success">Menu</button>
-    </div>
 
-    <div class="button-container">
-        <button id="mainanimation" class="btn btn-primary">Start Animation (click again to reset)</button>
-        <button id="fadeanim" class="btn btn-success">Fade Out/Fade In</button>
-        <button id="togglesquare" class="btn btn-info">Toggle</button>
-        <button id="slideanim" class="btn btn-warning">Slideup/Slidedown</button>
-        <button id="event" class="btn btn-danger">Don't click this button.</button>
-    </div>
+<div class="menu-bar">
+    <button id="menu" class="btn btn-success">Menu</button>
+</div>
 
-    <div class="green-square"></div>
+<div class="button-container">
+    <button id="mainanimation" class="btn btn-primary">Start Animation (click again to reset)</button>
+    <button id="fadeanim" class="btn btn-success">Fade Out/Fade In</button>
+    <button id="togglesquare" class="btn btn-info">Toggle</button>
+    <button id="slideanim" class="btn btn-warning">Slideup/Slidedown</button>
+    <button id="event" class="btn btn-danger">Don't click this button.</button>
+</div>
+
+<div class="green-square"></div>
+
+<div class="carousel-container">
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel" data-interval="false">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="carousel-item-text">
+                    <h3>Hello</h3>
+                    <p>I used this bootstrap element</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-item-text">
+                    <h3>This are slides</h3>
+                    <p>They have some info written on them</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-item-text">
+                    <h3>Want to see green square animations?</h3>
+                    <p>Click "Menu" to make buttons appear to affect the square</p>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+
 </body>
 </html>
