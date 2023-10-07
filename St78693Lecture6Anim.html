@@ -1,19 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        .menu-bar {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+        }
+        
+        .button-container {
+            display: none;
+            background-color: #fff;
+            padding: 10px;
+            position: fixed;
+            top: 50px; 
+            left: 0;
+            width: 100%;
+            z-index: 998;
+        }
+
+        .green-square {
+            background:#125f21;
+            height:100px;
+            width:100px;
+            position: absolute;
+            top: 150px; 
+            left: 0;
+        }
+    </style>
     <script>
         $(document).ready(function () {
             var isReversed = false;
             var isFadedOut = false;
             var isSlidUp = false;
 
+            $("button#menu").click(function () {
+                $(".button-container").slideToggle();
+            });
+
             $("button#mainanimation").click(function () {
                 if (!isReversed) {
                     startAnimation();
                     isReversed = true;
                 } else {
-                    $("div").stop().css({
+                    $(".green-square").stop().css({
                         left: '0',
                         opacity: '1',
                         height: '100px',
@@ -22,13 +60,14 @@
                     isReversed = false;
                 }
             }); 
+
             $("button#slideanim").click(function () {
                 if (!isSlidUp) {
-                    $("div").slideUp(500, function () {
+                    $(".green-square").slideUp(500, function () {
                         isSlidUp = true;
                     });
                 } else {
-                    $("div").slideDown(500, function () {
+                    $(".green-square").slideDown(500, function () {
                         isSlidUp = false;
                     });
                 }
@@ -36,18 +75,18 @@
 
             $("button#fadeanim").click(function () {
                 if (!isFadedOut) {
-                    $("div").fadeOut(500, function () {
+                    $(".green-square").fadeOut(500, function () {
                         isFadedOut = true;
                     });
                 } else {
-                    $("div").fadeIn(500, function () {
+                    $(".green-square").fadeIn(500, function () {
                         isFadedOut = false;
                     });
                 }
             });
 
             $("button#togglesquare").click(function () {
-                $("div").toggle();
+                $(".green-square").toggle();
             });
 
             $("button#event").click(function () {
@@ -55,7 +94,7 @@
             });
        
             function startAnimation() {
-                $("div").animate({
+                $(".green-square").animate({
                     left: '250px',
                     opacity: '0.5',
                     height: '150px',
@@ -67,11 +106,18 @@
     </script>
 </head>
 <body>
-    <button id="mainanimation">Start Animation (click again to reset)</button>
-    <button id="fadeanim">Fade Out/Fade In</button>
-    <button id="togglesquare">Toggle</button>
-    <button id="slideanim">Slideup/Slidedown</button>
-    <button id="event">Don't click this button.</button>
-    <div style="background:#125f21;height:100px;width:100px;position:absolute;"></div>
+    <div class="menu-bar">
+        <button id="menu" class="btn btn-success">Menu</button>
+    </div>
+
+    <div class="button-container">
+        <button id="mainanimation" class="btn btn-primary">Start Animation (click again to reset)</button>
+        <button id="fadeanim" class="btn btn-success">Fade Out/Fade In</button>
+        <button id="togglesquare" class="btn btn-info">Toggle</button>
+        <button id="slideanim" class="btn btn-warning">Slideup/Slidedown</button>
+        <button id="event" class="btn btn-danger">Don't click this button.</button>
+    </div>
+
+    <div class="green-square"></div>
 </body>
 </html>
