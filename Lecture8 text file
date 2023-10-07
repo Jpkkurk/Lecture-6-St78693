@@ -1,2 +1,4 @@
 I added bootstrap components from an existing bootstrap CSS and JS files on CDN server. 
-I downloaded a template 
+I downloaded a template but the code inside of it was a bit messy so instead of integrating components from there I decided to use 
+separate bootstrap components. The original code has been altered with new components but the purpose and functionality remains the same as per
+tasks in Lecture 6. Code has been debugged and no errors were found.
